@@ -44,18 +44,22 @@ export const Table = ({ data, onRowClick }: any) => {
             <th>Tags</th>
             <th onClick={() => handleSort('country')}>Country</th>
             <th onClick={() => handleSort('spend')}>Spend</th>
+            <th>preview</th> {/* New column header */}
           </tr>
         </thead>
         <tbody>
           {currentData
             .filter((row: any) => row && row.creative_id)
             .map((row: any) => (
-              <tr key={row.creative_id} onClick={() => onRowClick(row)}>
+              <tr key={row.creative_id}>
                 <td>{row.creative_id}</td>
                 <td>{row.creative_name}</td>
                 <td>{row.tags ? row.tags.replaceAll(';', ', ') : ''}</td>
                 <td>{row.country}</td>
                 <td>${row.spend}</td>
+                <td>
+                  <button onClick={() => onRowClick(row)}>Details</button> {/* New Preview button */}
+                </td>
               </tr>
             ))}
         </tbody>
