@@ -1,9 +1,9 @@
 .filterWrapper {
     position: relative;
     display: inline-block;
-  }
-  
-  .filterButton {
+}
+
+.filterButton {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -15,24 +15,25 @@
     font-weight: 600;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     transition: background 0.3s ease;
-  }
-  
-  .filterButton:hover {
+    color: #333; /* Ensure text is visible */
+}
+
+.filterButton:hover {
     background-color: #f5f5f5;
-  }
-  
-  .icon {
+}
+
+.icon {
     font-size: 18px;
-  }
-  
-  .arrowIcon {
+    color: #333; /* Ensure icon is visible */
+}
+
+.arrowIcon {
     font-size: 16px;
-  }
-  
-  /* Pop-up (filter) container */
-  .filterPopUp {
+}
+
+.filterPopUp {
     position: absolute;
-    top: 100%; /* Position below the button */
+    top: 100%;
     left: 0;
     width: 300px;
     padding: 20px;
@@ -40,34 +41,22 @@
     border: 1px solid #ddd;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     border-radius: 12px;
-    display: none; /* Initially hidden */
+    visibility: hidden; /* Changed from display:none */
     opacity: 0;
     transform: translateY(-20px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-  }
-  
-  /* When the filter is active (displayed) */
-  .filterPopUp.show {
-    display: block;
+    transition: visibility 0s linear 0.3s, opacity 0.3s ease, transform 0.3s ease;
+    z-index: 999; /* Ensure popup is on top */
+}
+
+/* When the filter is active (displayed) */
+.filterPopUp.show {
+    visibility: visible;
     opacity: 1;
     transform: translateY(0);
-  }
-  
-  /* react-select overrides */
-  .react-select__control {
-    border-radius: 8px;
-    min-height: 40px;
-    border-color: #ccc;
-    box-shadow: none;
-  }
-  
-  .react-select__control--is-focused {
-    border-color: #4caf50;
-    box-shadow: 0 0 0 1px #4caf50;
-  }
-  
-  /* Optional close button for the pop-up */
-  .filterPopUp .closeButton {
+    transition-delay: 0s; /* Remove delay when showing */
+}
+
+.filterPopUp .closeButton {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -76,9 +65,73 @@
     font-size: 18px;
     cursor: pointer;
     color: #888;
-  }
-  
-  .filterPopUp .closeButton:hover {
+}
+
+.filterPopUp .closeButton:hover {
     color: #555;
-  }
-  
+}
+
+.deleteButton {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.deleteButton:hover {
+    background-color: rgba(255, 0, 0, 0.1);
+    transform: scale(1.1);
+}
+
+.deleteIcon {
+    color: #ff4d4d;
+    font-size: 18px;
+}
+
+.filterTag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #f0f0f0;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 14px;
+    color: #333;
+    margin: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.filterType {
+    font-weight: bold;
+    color: #4caf50;
+}
+
+.filterField {
+    font-weight: 500;
+    color: #007bff;
+}
+
+.filterOperator {
+    color: #555;
+}
+
+.filterValue {
+    color: #ff5722;
+    font-weight: bold;
+}
+
+/* Fix for text color visibility if it's not visible */
+.filterButton span {
+    color: #333; /* Ensures text inside the filter button is visible */
+}
+
+/* Adjust icon visibility */
+.filterButton .icon {
+    color: #333; /* Ensures icon color is distinct */
+}
+
