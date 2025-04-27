@@ -82,7 +82,4 @@ Access it live here:
 
 ---
 
-## Feedback
 
-Thank you for reviewing my submission!  
-I'm excited about the opportunity to join **Segwise** and contribute to building exceptional data-first products. 🚀
