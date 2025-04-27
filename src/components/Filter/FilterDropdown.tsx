@@ -74,8 +74,8 @@ export const FilterDropdown = ({ onAddFilter }: Props) => {
         logicalOperator,
       });
     }
-    
-    // Reset states after adding filter
+
+    // Reset fields
     setSelectedField('');
     setInputValue('');
     setSearchText('');
@@ -88,7 +88,6 @@ export const FilterDropdown = ({ onAddFilter }: Props) => {
         <span>Add Filter</span>
       </div>
 
-      {/* Selected Filters */}
       <div className={styles.selectedFilters}>
         {selectedField && (
           <div className={styles.filterCard}>
@@ -106,7 +105,6 @@ export const FilterDropdown = ({ onAddFilter }: Props) => {
         )}
       </div>
 
-      {/* Search and Tabs */}
       {!selectedField && (
         <>
           <div className={styles.searchWrapper}>
@@ -155,10 +153,8 @@ export const FilterDropdown = ({ onAddFilter }: Props) => {
         </>
       )}
 
-      {/* Input Section for Selected Field */}
       {selectedField && (
         <div style={{ padding: '10px' }}>
-          {/* Metric operators */}
           {filterType === 'metric' && (
             <select
               value={operator}
@@ -171,7 +167,6 @@ export const FilterDropdown = ({ onAddFilter }: Props) => {
             </select>
           )}
 
-          {/* Tag operators */}
           {filterType === 'tag' && (
             <select
               value={tagOperator}
@@ -185,7 +180,6 @@ export const FilterDropdown = ({ onAddFilter }: Props) => {
             </select>
           )}
 
-          {/* Input value */}
           <input
             type={filterType === 'metric' ? 'number' : 'text'}
             placeholder={filterType === 'metric' ? 'Enter number' : 'Enter value'}
@@ -194,7 +188,6 @@ export const FilterDropdown = ({ onAddFilter }: Props) => {
             style={{ width: '90%', padding: '10px', marginBottom: '10px' }}
           />
 
-          {/* Apply Filter Button */}
           <button
             onClick={handleSubmit}
             style={{
@@ -210,7 +203,6 @@ export const FilterDropdown = ({ onAddFilter }: Props) => {
             Apply Filter
           </button>
 
-          {/* Logical Operator */}
           <div style={{ marginTop: '15px' }}>
             <label style={{ marginRight: '10px', fontWeight: 'bold' }}>Next Filter Condition:</label>
             <select
