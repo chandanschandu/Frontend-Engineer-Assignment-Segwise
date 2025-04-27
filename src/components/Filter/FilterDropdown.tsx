@@ -14,21 +14,11 @@ const metricOptions = [
 ];
 
 const tagCategories = [
-  'CTA',
-  'Objects',
-  'Background Colour',
-  'CTA Placement',
-  'Language',
-  'Logo present',
-  'Background setting',
-  'CTA background colour',
-  'Audio - Type',
-  'Audio - Language',
-  'Concept',
+  'CTA', 'Objects', 'Background Colour', 'CTA Placement', 'Language', 'Logo present',
+  'Background setting', 'CTA background colour', 'Audio - Type', 'Audio - Language', 'Concept',
 ];
 
 type Props = {
-  closeDropdown: () => void;
   onAddFilter: (filter: {
     type: FilterType;
     field: string;
@@ -38,7 +28,7 @@ type Props = {
   }) => void;
 };
 
-export const FilterDropdown = ({ closeDropdown, onAddFilter }: Props) => {
+export const FilterDropdown = ({ onAddFilter }: Props) => {
   const [filterType, setFilterType] = useState<FilterType>('dimension');
   const [selectedField, setSelectedField] = useState<string>('');
   const [searchText, setSearchText] = useState('');
@@ -62,7 +52,7 @@ export const FilterDropdown = ({ closeDropdown, onAddFilter }: Props) => {
   };
 
   const handleSubmit = () => {
-    if (!selectedField || inputValue === '') {
+    if (!selectedField || inputValue.trim() === '') {
       alert('Please select a field and enter a value.');
       return;
     }
@@ -84,7 +74,9 @@ export const FilterDropdown = ({ closeDropdown, onAddFilter }: Props) => {
         logicalOperator,
       });
     }
-    setSelectedField('');  // Reset field selection after submitting
+    
+    // Reset states after adding filter
+    setSelectedField('');
     setInputValue('');
     setSearchText('');
   };
@@ -96,18 +88,25 @@ export const FilterDropdown = ({ closeDropdown, onAddFilter }: Props) => {
         <span>Add Filter</span>
       </div>
 
-      {/* Selected Filters (Display as Cards) */}
+      {/* Selected Filters */}
       <div className={styles.selectedFilters}>
         {selectedField && (
           <div className={styles.filterCard}>
-            <span className={styles.filterType}>{filterType.charAt(0).toUpperCase() + filterType.slice(1)}</span>
+            <span className={styles.filterType}>
+              {filterType.charAt(0).toUpperCase() + filterType.slice(1)}
+            </span>
             <span className={styles.filterField}>{selectedField}</span>
-            <button onClick={() => setSelectedField('')} className={styles.removeFilterBtn}>X</button>
+            <button
+              onClick={() => setSelectedField('')}
+              className={styles.removeFilterBtn}
+            >
+              X
+            </button>
           </div>
         )}
       </div>
 
-      {/* Search Input and Tabs */}
+      {/* Search and Tabs */}
       {!selectedField && (
         <>
           <div className={styles.searchWrapper}>
@@ -156,9 +155,10 @@ export const FilterDropdown = ({ closeDropdown, onAddFilter }: Props) => {
         </>
       )}
 
-      {/* Selected Field Input Section */}
+      {/* Input Section for Selected Field */}
       {selectedField && (
         <div style={{ padding: '10px' }}>
+          {/* Metric operators */}
           {filterType === 'metric' && (
             <select
               value={operator}
@@ -171,6 +171,7 @@ export const FilterDropdown = ({ closeDropdown, onAddFilter }: Props) => {
             </select>
           )}
 
+          {/* Tag operators */}
           {filterType === 'tag' && (
             <select
               value={tagOperator}
@@ -184,23 +185,34 @@ export const FilterDropdown = ({ closeDropdown, onAddFilter }: Props) => {
             </select>
           )}
 
+          {/* Input value */}
           <input
             type={filterType === 'metric' ? 'number' : 'text'}
             placeholder={filterType === 'metric' ? 'Enter number' : 'Enter value'}
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
-            style={{ width: '90%', padding: '10px' }}
+            style={{ width: '90%', padding: '10px', marginBottom: '10px' }}
           />
 
+          {/* Apply Filter Button */}
           <button
             onClick={handleSubmit}
-            style={{ marginTop: '10px', width: '100%', padding: '10px', background: '#4caf50', color: 'white', border: 'none', borderRadius: '6px' }}
+            style={{
+              width: '100%',
+              padding: '10px',
+              backgroundColor: '#4caf50',
+              color: '#fff',
+              border: 'none',
+              borderRadius: '6px',
+              fontWeight: 'bold'
+            }}
           >
             Apply Filter
           </button>
 
+          {/* Logical Operator */}
           <div style={{ marginTop: '15px' }}>
-            <label style={{ marginRight: '10px' }}>Next Filter Condition:</label>
+            <label style={{ marginRight: '10px', fontWeight: 'bold' }}>Next Filter Condition:</label>
             <select
               value={logicalOperator}
               onChange={(e) => setLogicalOperator(e.target.value as 'AND' | 'OR')}
