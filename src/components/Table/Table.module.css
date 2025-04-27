@@ -1,0 +1,126 @@
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 20px 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  th {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  th, td {
+    border-left: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f4f7f6;
+  }
+  
+  tr:hover {
+    background: #f1f1f1;
+    transform: scale(1.02);
+    transition: all 0.3s ease;
+  }
+  
+  tr:focus-within {
+    background: #f0f9ff;
+  }
+  
+  td:first-child {
+    border-left: none;
+  }
+  
+  caption {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #333;
+  }
+  
+  .table-responsive {
+    max-width: 100%;
+    overflow-x: auto;
+    margin-bottom: 20px;
+  }
+  
+  .table td, .table th {
+    transition: all 0.3s ease;
+  }
+  
+  .table th, .table td {
+    position: relative;
+    overflow: hidden;
+    padding-left: 10px;
+  }
+  
+  .table tr:nth-child(odd) {
+    background-color: #fafafa;
+  }
+  
+  .table tr:hover td, .table tr:focus td {
+    background-color: #dff0fd;
+    transform: scale(1.02);
+  }
+  
+  .table th:hover, .table td:hover {
+    cursor: pointer;
+  }
+  
+  .table th {
+    position: relative;
+  }
+  
+  .table th::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 100%;
+    background: #666;
+    transition: all 0.3s ease;
+  }
+  
+  .table th:hover::after {
+    width: 3px;
+  }
+  
+  .table td {
+    border-left: 1px solid #f0f0f0;
+  }
+  
+  .table td:last-child {
+    border-right: 1px solid #f0f0f0;
+  }
+  
+  .table td:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(72, 154, 221, 0.8);
+  }
+  
+  @media (max-width: 768px) {
+    .table {
+      font-size: 12px;
+    }
+    .table th, .table td {
+      padding: 10px;
+    }
+  }
+  

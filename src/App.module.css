@@ -1,0 +1,66 @@
+.container {
+    padding: 20px;
+    background: #fff;
+    min-height: 100vh;
+  }
+  
+  .header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .logo {
+    width: 40px;
+    height: 40px;
+    background: #c4eb6a;
+    border-radius: 5px;
+  }
+  
+  .filterSection {
+    margin-top: 20px;
+    padding: 20px;
+    background: #f6f9fc;
+    border: 1px dashed #ccc;
+    border-radius: 10px;
+  }
+  
+  .instructions {
+    margin-top: 30px;
+  }
+  
+  .tableSection {
+    margin-top: 30px;
+  }
+  .instructions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 20px;
+  }
+  
+  .instructions b {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333;
+  }
+  
+  .searchInput {
+    width: 50%;
+    padding: 10px 15px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 200ms ease-in-out;
+  }
+  
+  .searchInput:focus {
+    border-color: #4caf50; /* Green color when focused */
+  }
+  
+  .searchInput::placeholder {
+    color: #aaa;
+  }
+  
